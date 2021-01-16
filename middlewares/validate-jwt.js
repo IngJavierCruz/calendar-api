@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const validateJwt = ( req = request, res = response, next ) => {
 
     const token = req.header('x-jwt');
+    
     if (!token) {
         return res.status(401).json({
             ok: false,
@@ -23,7 +24,7 @@ const validateJwt = ( req = request, res = response, next ) => {
         const { uid, name } = payload;
         req.uid = uid;
         req.name = name;
-
+      
     } catch (err) {
 
         console.log(err);
